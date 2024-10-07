@@ -48,8 +48,6 @@ public class NewFileCommand : Command<NewFileCommand.Settings>
         
         try
         {
-            string s = AnsiConsole.Prompt(new TextPrompt<string>(Resources.Command_NewFile_Prompt).AllowEmpty());
-
             StringBuilder stringBuilder = new StringBuilder();
 
             ConsoleKeyInfo keyInfo;
