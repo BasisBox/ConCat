@@ -22,7 +22,7 @@ namespace ConCat.Cli;
 
 public static class Constants
 {
-    public static string GitHubIssuesUrl = "https://github.com/alastairlundy/BasisBox/issues/new/";
+    public static readonly string GitHubIssuesUrl = "https://github.com/BasisBox/ConCat/issues/new/";
 
 
 }
