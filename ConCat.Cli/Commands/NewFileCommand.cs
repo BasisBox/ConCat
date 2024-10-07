@@ -48,6 +48,16 @@ public class NewFileCommand : Command<NewFileCommand.Settings>
         
         try
         {
+            string fileName = "";
+            if (settings.Files.Any() && settings.Files.First().StartsWith(">") == false)
+            {
+                fileName = AnsiConsole.Prompt(new TextPrompt<string>(Resources.Command_NewFile_Prompt));
+            }
+            else if (settings.Files.Any() && settings.Files.First().StartsWith(">"))
+            {
+                fileName = settings.Files.First().Replace(">", string.Empty);
+            }
+
             StringBuilder stringBuilder = new StringBuilder();
 
             ConsoleKeyInfo keyInfo;
@@ -74,9 +84,7 @@ public class NewFileCommand : Command<NewFileCommand.Settings>
                 }
 
             } while (keyInfo.Key != ConsoleKey.D && (keyInfo.Modifiers != ConsoleModifiers.Control));
-
-            string fileName = settings.Files.First().Replace(">", string.Empty);
-
+            
             string[] fileContents = stringBuilder.ToString().Split(Environment.NewLine);
             
             File.WriteAllLines(fileName, fileContents);
