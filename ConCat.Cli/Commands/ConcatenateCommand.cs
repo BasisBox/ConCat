@@ -43,7 +43,7 @@ public class ConcatenateCommand : Command<ConcatenateCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        if (settings.Files == null || settings.Files.Any())
+        if (settings.Files == null || settings.Files.Any() == false)
         {
             AnsiConsole.WriteException(new NullReferenceException(Resources.Exceptions_NoFileProvided));
             return -1;
